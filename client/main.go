@@ -18,7 +18,7 @@ func main() {
 		os.Exit(1)
 	}()
 
-	u := url.URL{Scheme: "ws", Host: "127.0.0.1:8080", Path: "/ws"}
+	u := url.URL{Scheme: "ws", Host: "127.0.0.1:49163", Path: "/ws"}
 	log.Printf("connecting to %s", u.String())
 
 	conn, _, err := websocket.DefaultDialer.Dial(u.String(), nil)

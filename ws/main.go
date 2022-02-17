@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"github.com/MikeDevresse/websocket-scale/ws/internal/websocket"
 	"log"
-	"math/rand"
 	"net/http"
 )
 
@@ -21,7 +20,7 @@ func main() {
 
 func initWebsocket() {
 	server := websocket.NewServer()
-	identifier := rand.Int()
+	count := 0
 
 	http.HandleFunc("/ws", func(w http.ResponseWriter, r *http.Request) {
 		conn, err := websocket.Upgrade(w, r)
@@ -33,6 +32,7 @@ func initWebsocket() {
 
 		client := websocket.NewClient("a", conn)
 		server.AddClient(client)
-		client.Write(fmt.Sprintf("Server %d", identifier))
+		count = count + 1
+		client.Write(fmt.Sprintf("Server %d", count))
 	})
 }
