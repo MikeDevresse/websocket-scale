@@ -10,13 +10,13 @@ volumes:
 services:
   go:
     build:
-      context: .
-      dockerfile: ./ws/Dockerfile
+      context: ./ws
+      target: prod
     depends_on:
       - redis
       - mongo
     ports:
-      - "8080:80"
+      - "8080:8000"
 
   mongo:
     image: mongo

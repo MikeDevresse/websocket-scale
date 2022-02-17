@@ -7,7 +7,7 @@ COPY ./ /app/
 WORKDIR /app
 
 RUN go mod download; \
-    CGO_ENABLED=0 GOOS=linux go build -ldflags="-w -s" -o main ./
+    go build -o main ./
 
 CMD ["/app/main"]
 
